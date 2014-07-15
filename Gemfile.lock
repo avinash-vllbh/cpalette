@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cpalette (0.0.1)
+    cpalette (0.0.2)
 
 GEM
   remote: https://rubygems.org/
