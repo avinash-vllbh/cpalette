@@ -1,6 +1,6 @@
 require "cpalette/version"
 
-class CPalette
+class Cpalette
   def get_hsl_values_decimal(color)
 
   end
