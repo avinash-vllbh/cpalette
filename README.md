@@ -1,6 +1,9 @@
 # Cpalette
 
-TODO: Write a gem description
+CPalette
+----------------------
+
+A simple color gem that returns you with a palette of colors which are web friendly and easy to use.
 
 ## Installation
 
@@ -22,7 +25,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/cpalette/fork )
+1. Fork it ( https://github.com/avinash-vllbh/cpalette/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

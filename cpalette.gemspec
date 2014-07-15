@@ -7,10 +7,10 @@ Gem::Specification.new do |spec|
   spec.name          = "cpalette"
   spec.version       = Cpalette::VERSION
   spec.authors       = ["avinash-vllbh"]
-  spec.email         = ["avallab1@asu.edu"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.email         = ["avinash.vallab@gmail.com"]
+  spec.summary       = "Palette of colors to choose from."
+  spec.description   = "A simple color gem that returns you with a palette of colors which are web friendly and easy to use."
+  spec.homepage      = "http://rubygems.org/gems/cpalette"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
