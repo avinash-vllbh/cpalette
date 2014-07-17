@@ -21,7 +21,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+	colors_array = Cpalette.palette(4)
+	
+ => [{"hsl"=>"359,62%,46%", "rgb"=>"190,45,47", "hex"=>"#be2d2f"}, {"hsl"=>"89,62%,80%", "rgb"=>"205,236,172", "hex"=>"#cdecac"}, {"hsl"=>"269,80%,71%", "rgb"=>"179,122,240", "hex"=>"#b37af0"}, {"hsl"=>"179,69%,79%", "rgb"=>"165,238,237", "hex"=>"#a5eeed"}]
+
+ colors_array returns you with an array of 4 hashes with hsl, rgb and hex values for each color.
+
 
 ## Contributing
 
