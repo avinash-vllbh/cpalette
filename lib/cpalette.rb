@@ -43,7 +43,7 @@ module Cpalette
     h3 = b.to_s(16).length == 2 ? b.to_s(16) : "0"+b.to_s(16)
     return "##{h1}#{h2}#{h3}"
   end
-	def self.palette(size, args)
+	def self.palette(size, options = {})
     color_palette = []
     hue_array = []
     hue = 359
@@ -64,8 +64,8 @@ module Cpalette
       color_codes["hex"] = rgb2hex(rgb[0].to_i, rgb[1].to_i, rgb[2].to_i)
       color_palette.push(color_codes) unless color_palette.include?(color_codes)
     end
-    if args[:hex] != nil
-      if args[:hex] == true
+    if options[:hex] != nil
+      if options[:hex] == true
         cpalette = []
         color_palette.each do |color|
           cpalette.push(color["hex"])
