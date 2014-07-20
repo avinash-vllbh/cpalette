@@ -30,8 +30,14 @@ Or install it yourself as:
 
  Case 2:
   You can pass an option :hex => true, which would return you an array containing only Hex values of required number of colors.
+
   
+  colors_array = Cpalette.palette(4, {:hex => true})
+
+                    or
+
   colors_array = Cpalette.palette(4, :hex => true)
+
 
   => ["#37e1de", "#a468e3", "#f0383b", "#a5e660"]
 
