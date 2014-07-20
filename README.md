@@ -34,11 +34,6 @@ Or install it yourself as:
   
   colors_array = Cpalette.palette(4, {:hex => true})
 
-                    or
-
-  colors_array = Cpalette.palette(4, :hex => true)
-
-
   => ["#37e1de", "#a468e3", "#f0383b", "#a5e660"]
 
   Returned colors_array contains only hex values of 4 different colors.
