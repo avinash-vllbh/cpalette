@@ -43,10 +43,11 @@ module Cpalette
     h3 = b.to_s(16).length == 2 ? b.to_s(16) : "0"+b.to_s(16)
     return "##{h1}#{h2}#{h3}"
   end
-	def self.palette(size)
+	def self.palette(size, args)
     color_palette = []
     hue_array = []
     hue = 359
+    size = size.to_i
     step_size = 360/size
     for i in 0..size-1
       hue_array.push(hue)
@@ -62,6 +63,15 @@ module Cpalette
       rgb = color_codes["rgb"].split(",")
       color_codes["hex"] = rgb2hex(rgb[0].to_i, rgb[1].to_i, rgb[2].to_i)
       color_palette.push(color_codes) unless color_palette.include?(color_codes)
+    end
+    if args[:hex] != nil
+      if args[:hex] == true
+        cpalette = []
+        color_palette.each do |color|
+          cpalette.push(color["hex"])
+        end
+        color_palette = cpalette
+      end
     end
     return color_palette
   end
