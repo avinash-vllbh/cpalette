@@ -21,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
   
-  _Case 1:
+  _Case 1:_
   ```ruby
 	colors_array = Cpalette.palette(4)
 	
@@ -30,7 +30,7 @@ Or install it yourself as:
 
  colors_array returns you with an array of 4 hashes with hsl, rgb and hex values for each color.
 
- _Case 2:
+ _Case 2:_
   You can pass an option :hex => true, which would return you an array containing only Hex values of required number of colors.
 
   ```ruby
