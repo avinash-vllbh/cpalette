@@ -1,29 +1,13 @@
 require "cpalette/version"
 
 module Cpalette
-  # Still to be implemented
-  # def get_hsl_values_decimal(color)
-  # end
-  # def get_color_codes_in_hex(h, s, l)
-  # end
-  # Converts hue to rgb based on following conditions
-  #  
-  def self.hue2rgb(p,q,t)
-    t = t + 1 if t < 0
-    t = t -1 if t > 1
-    if 6 * t < 1
-      return p+(q-p)*6*t
-    end
-    if 2 * t < 1
-      return q
-    end
-    if 3 * t < 2
-      return p + (q - p) * ((2.0/3 - t) * 6)
-    end
-    return p
-  end
-
   # Given Hue, Saturation and Lightness values return RGB values to it.
+  # Function adopted from - http://easyrgb.com
+  # Assumes inputs: h, s, l are in the range of [0,1]
+  # Returns outputs: R, G, B valu in the range of [0,255]
+  # E.g.
+  # Inputs: h: 0.25, s: 0.89, l: 0.54
+  # Output: r: 141, g: 242, b: 33
   def self.get_color_codes_in_rgb(h, s, l)
     if s == 0
       r = g = b = l * 255
@@ -41,7 +25,28 @@ module Cpalette
     return "#{r},#{g},#{b}"
   end
 
+  # Converts hue to rgb based on following conditions
+  def self.hue2rgb(p,q,t)
+    t = t + 1 if t < 0
+    t = t -1 if t > 1
+    if 6 * t < 1
+      return p+(q-p)*6*t
+    end
+    if 2 * t < 1
+      return q
+    end
+    if 3 * t < 2
+      return p + (q - p) * ((2.0/3 - t) * 6)
+    end
+    return p
+  end
+
   # Converts RGB to HEX code values
+  # R, G, B are converted to string of base 16 and padded a 0 if length is less than 2
+  # Assumes input r, g, b in the range of [0, 255]
+  # Returns a HEX value
+  # E.g Input - r: 255, g:255, b:255 => #FFFFFF
+  # 
   def self.rgb2hex(r, g, b)
     h1 = r.to_s(16).length == 2 ? r.to_s(16) : "0"+r.to_s(16)
     h2 = g.to_s(16).length == 2 ? g.to_s(16) : "0"+g.to_s(16)
@@ -49,7 +54,11 @@ module Cpalette
     return "##{h1}#{h2}#{h3}"
   end
 
-  # Returns an array of hashes with HSL, RGB and HEX values for each color generated
+  # Takes an input parameter of size (no of colors and options hash)
+  # Returns equivalent number of random colors with HSL, RGB, HEX codes
+  # Max possible values for Hue: 360, Saturation: 100, Lightness: 100
+  # Saturation and Lightness values tend to determine the extremes of a color
+  # Choosing a range of 60..90 tends to give optimum colors
 	def self.palette(size, options = {})
     color_palette = []
     hue_array = []
@@ -60,7 +69,7 @@ module Cpalette
       hue_array.push(hue)
       hue = hue - step_size
     end
-    hue_array.shuffle!
+    hue_array.shuffle! #Inplace
     hue_array.each do |hue|
       s = Random.new.rand(60..90)
       l = Random.new.rand(40..80)
@@ -71,6 +80,7 @@ module Cpalette
       color_codes["hex"] = rgb2hex(rgb[0].to_i, rgb[1].to_i, rgb[2].to_i)
       color_palette.push(color_codes) unless color_palette.include?(color_codes)
     end
+    # If only hex option is set by user
     if options[:hex] != nil
       if options[:hex] == true
         cpalette = []
@@ -80,6 +90,7 @@ module Cpalette
         color_palette = cpalette
       end
     end
+    # binding.pry
     return color_palette
   end
 end
