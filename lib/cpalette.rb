@@ -1,12 +1,13 @@
 require "cpalette/version"
 
 module Cpalette
-  def get_hsl_values_decimal(color)
-
-  end
-  def get_color_codes_in_hex(h, s, l)
-
-  end
+  # Still to be implemented
+  # def get_hsl_values_decimal(color)
+  # end
+  # def get_color_codes_in_hex(h, s, l)
+  # end
+  # Converts hue to rgb based on following conditions
+  #  
   def self.hue2rgb(p,q,t)
     t = t + 1 if t < 0
     t = t -1 if t > 1
@@ -21,6 +22,8 @@ module Cpalette
     end
     return p
   end
+
+  # Given Hue, Saturation and Lightness values return RGB values to it.
   def self.get_color_codes_in_rgb(h, s, l)
     if s == 0
       r = g = b = l * 255
@@ -37,12 +40,16 @@ module Cpalette
     end
     return "#{r},#{g},#{b}"
   end
+
+  # Converts RGB to HEX code values
   def self.rgb2hex(r, g, b)
     h1 = r.to_s(16).length == 2 ? r.to_s(16) : "0"+r.to_s(16)
     h2 = g.to_s(16).length == 2 ? g.to_s(16) : "0"+g.to_s(16)
     h3 = b.to_s(16).length == 2 ? b.to_s(16) : "0"+b.to_s(16)
     return "##{h1}#{h2}#{h3}"
   end
+
+  # Returns an array of hashes with HSL, RGB and HEX values for each color generated
 	def self.palette(size, options = {})
     color_palette = []
     hue_array = []
